@@ -71,7 +71,7 @@ export const PhoneSimulatorModal = () => {
           DEMO MODE — No real messages are sent. This is a visual simulator only. Clicking buttons updates app state live.
         </div>
 
-        <div className="modal-body" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '1.5rem', alignItems: 'start' }}>
+        <div className="modal-body simulator-modal-grid">
           {/* Left Controls & Info */}
           <div>
             <div style={{ marginBottom: '1.25rem' }}>

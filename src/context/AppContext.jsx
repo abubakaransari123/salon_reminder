@@ -65,6 +65,7 @@ export const AppProvider = ({ children }) => {
 
   const [demoTourStep, setDemoTourStep] = useState(0); // 0 = inactive, 1..6 = active steps
   const [toastMessage, setToastMessage] = useState(null);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   // Sync with LocalStorage
   useEffect(() => {
@@ -682,7 +683,9 @@ export const AppProvider = ({ children }) => {
         demoTourStep,
         startDemoTour,
         nextDemoStep,
-        endDemoTour
+        endDemoTour,
+        mobileSidebarOpen,
+        setMobileSidebarOpen
       }}
     >
       {children}

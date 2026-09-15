@@ -83,12 +83,10 @@ export const AuthPage = () => {
       }}
     >
       <div
-        className="glass-card"
+        className="glass-card auth-card-container"
         style={{
           width: '100%',
           maxWidth: '960px',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1.15fr',
           borderRadius: '24px',
           overflow: 'hidden',
           border: '1px solid rgba(255, 255, 255, 0.12)',
@@ -97,6 +95,7 @@ export const AuthPage = () => {
       >
         {/* Left Side: Brand Value Proposition & Features */}
         <div
+          className="auth-side-panel"
           style={{
             background: 'linear-gradient(135deg, #1e1b4b 0%, #311042 50%, #0d131f 100%)',
             padding: '2.5rem 2rem',

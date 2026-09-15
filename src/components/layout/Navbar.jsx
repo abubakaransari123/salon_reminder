@@ -14,7 +14,8 @@ import {
   RotateCcw,
   CheckCircle2,
   AlertTriangle,
-  LogOut
+  LogOut,
+  Menu
 } from 'lucide-react';
 
 export const Navbar = () => {
@@ -26,7 +27,8 @@ export const Navbar = () => {
     startDemoTour,
     setAppointmentModalOpen,
     setActiveTab,
-    setRecoveryModalSlot
+    setRecoveryModalSlot,
+    setMobileSidebarOpen
   } = useApp();
 
   const { currentUser, switchRole, isOwner, logout } = useAuth();
@@ -35,43 +37,40 @@ export const Navbar = () => {
   const unreadNotifs = notifications.filter(n => !n.read);
 
   return (
-    <header style={{
-      height: '70px',
-      borderBottom: '1px solid var(--border-glass)',
-      background: 'rgba(17, 24, 39, 0.85)',
-      backdropFilter: 'blur(16px)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      padding: '0 2rem',
-      position: 'sticky',
-      top: 0,
-      zIndex: 40
-    }}>
-      {/* Left: Salon Profile & Live Status */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-        <div>
+    <header className="navbar-header">
+      {/* Left: Hamburger Menu & Salon Profile */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0 }}>
+        <button
+          className="mobile-menu-toggle"
+          onClick={() => setMobileSidebarOpen(prev => !prev)}
+          aria-label="Open navigation menu"
+          title="Open Menu"
+        >
+          <Menu size={22} />
+        </button>
+
+        <div style={{ minWidth: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <h2 style={{ fontSize: '1.15rem', fontWeight: '700', color: 'var(--text-primary)' }}>
+            <h2 className="navbar-salon-name" style={{ fontSize: '1.15rem', fontWeight: '700', color: 'var(--text-primary)', margin: 0 }}>
               {business.name}
             </h2>
-            <span className="badge badge-emerald" style={{ fontSize: '0.7rem' }}>
-              ● Live System
+            <span className="badge badge-emerald navbar-live-badge" style={{ fontSize: '0.7rem' }}>
+              ● Live
             </span>
           </div>
-          <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+          <p className="navbar-subtext" style={{ fontSize: '0.78rem', color: 'var(--text-muted)', margin: 0 }}>
             {business.address} • Currency: <strong style={{ color: 'var(--text-primary)' }}>{business.currency} ({formatCurrency(0, business.currency).replace(/[0-9,\s]/g, '') || business.currency})</strong>
           </p>
         </div>
       </div>
 
       {/* Right Actions */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+      <div className="navbar-actions" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
         {/* Guided Sales Demo Launch Button */}
         {demoTourStep === 0 ? (
           <button
             onClick={startDemoTour}
-            className="btn btn-secondary"
+            className="btn btn-secondary btn-demo-tour"
             style={{
               background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%)',
               borderColor: 'rgba(168, 85, 247, 0.4)',
@@ -82,18 +81,18 @@ export const Navbar = () => {
             title="Launch guided sales demo walkthrough"
           >
             <Sparkles size={16} />
-            <strong>Interactive Sales Demo</strong>
+            <strong className="btn-text">Demo Tour</strong>
           </button>
         ) : null}
 
         {/* Quick New Appointment Button */}
         <button
           onClick={() => setAppointmentModalOpen(true)}
-          className="btn btn-primary"
+          className="btn btn-primary btn-new-booking"
           style={{ fontSize: '0.85rem', padding: '0.45rem 0.95rem' }}
         >
           <Plus size={16} />
-          New Booking
+          <span className="btn-text">New Booking</span>
         </button>
 
         {/* Notifications Dropdown */}

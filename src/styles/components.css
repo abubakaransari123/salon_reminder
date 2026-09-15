@@ -453,3 +453,80 @@
   font-size: 0.85rem;
   color: #ffffff;
 }
+
+/* Simulator Modal Grid */
+.simulator-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .simulator-modal-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* Responsive Controls & Components */
+@media (max-width: 640px) {
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+
+  .modal-container {
+    max-height: 94vh;
+    border-radius: var(--radius-lg);
+  }
+
+  .modal-header, 
+  .modal-footer {
+    padding: 1rem 1.15rem;
+  }
+
+  .modal-body {
+    padding: 1rem 1.15rem;
+  }
+
+  .form-grid-2, 
+  .form-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .kpi-card {
+    padding: 1rem;
+  }
+
+  .kpi-value {
+    font-size: 1.35rem;
+  }
+
+  .toolbar-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .search-input-wrap {
+    max-width: 100%;
+    min-width: 100%;
+  }
+
+  .filter-pills {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

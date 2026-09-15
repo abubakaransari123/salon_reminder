@@ -50,6 +50,7 @@ export const DemoTourBar = () => {
 
   return (
     <div
+      className="tour-bar-container"
       style={{
         background: 'linear-gradient(90deg, #1e1b4b 0%, #311042 50%, #064e3b 100%)',
         borderBottom: '2px solid #8b5cf6',
@@ -82,7 +83,7 @@ export const DemoTourBar = () => {
         </div>
 
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
             <span style={{ fontWeight: '800', fontSize: '0.95rem', letterSpacing: '-0.01em', color: '#f3e8ff' }}>
               {current.title}
             </span>
@@ -96,7 +97,7 @@ export const DemoTourBar = () => {
         </div>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
+      <div className="tour-bar-actions" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
         <button
           onClick={nextDemoStep}
           className="btn btn-emerald btn-sm"
